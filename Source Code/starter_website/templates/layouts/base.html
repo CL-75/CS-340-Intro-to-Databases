@@ -1,0 +1,148 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+Template Name: Darkness
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+-->
+
+<!-- This template has been heavily edited and was primarily use das a quick color scheme for thr project -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Group 6 Games-{% block title %}{% endblock %} </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css')}}">
+<script rel="scripts" href="#"></script>
+</head>
+
+<body id="top">
+<!-- Header -->
+<div class="wrapper">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="/">GROUP6GAMES</a></h1>
+      <p>Get your Game ON</p>
+    </div>
+    <div id="topnav">
+      <ul>
+        <li><a href="/search">Search</a></li>
+        <li><a href="/user_profile">Profile</a></li>
+        <li><a href="/game_library">Library</a></li>
+        <li><a href="/cart">Cart</a></li>
+        <li><a href="/admin_page">Admin</a></li>
+        <li><a href="/hello">Hello</a></li>
+        {% if session['handle']: %}
+          <li>
+            <form id="login" action="/logout">
+              <span class="gameon"><div class="gameon">Get your Game on {{ session['handle'] }}</div><div><button type="submit">Logout</button></div></span>
+            </form>
+          </li>
+        {% else %}
+          <li class="last">
+            <div id="login">
+              <form id="login" action="/login" method="post">
+                <input type="text" name="user_id" placeholder="Username">
+                <button type="submit">Login</button>
+                <button type="submit" formaction="/new_user_profile" formmethod="get">New User</button>
+              </form>
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+    <br class="clear">
+  </div>
+</div>
+
+<!-- End Header -->
+
+<div class="wrapper"></div>
+  <div id="container">
+    <div id="content">
+      <div id="stage">
+        <div>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul class=flashes>
+            {% for message in messages %}
+              <li><h3>{{ message }}</h3></li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+        </div>
+        {% block body %}  <!-- 1st Block body -->
+        {% endblock %}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div id="container">
+    <div id="content">
+      <div id="stage">
+        {% block body_2 %}  <!-- 2nd Block body -->
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div id="container">
+    <div id="content">
+      <div id="stage">
+        {% block body_3 %}<!-- 3nd Block body -->
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrapper">
+  <div id="footer">
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <div class="footbox">
+      <h2>Lacus interdum</h2>
+      <ul>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Praesent et eros</a></li>
+        <li><a href="#">Lorem ipsum dolor</a></li>
+        <li><a href="#">Suspendisse in neque</a></li>
+        <li class="last"><a href="#">Praesent et eros</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+
+<div class="wrapper">
+ 
+</div>
+</body>
+</html>
+
+

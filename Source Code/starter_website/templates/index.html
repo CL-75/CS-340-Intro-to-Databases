@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}index{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <div class="column">Featured Game
+        <img src="/static/pics/hqdefault.jpg">
+    </div>
+    <div class="column">
+        <ul>
+            <li>Title: Zelda </li>
+            <li>Price: $12.00 </li>
+            <li class="rating">Rating: 
+                <img src="/static/pics/small_star.png" alt="star">
+                <img src="/static/pics/small_star.png" alt="star">
+                <img src="/static/pics/small_star.png" alt="star">
+                <img src="/static/pics/small_star.png" alt="star">
+                <img src="/static/pics/small_star.png" alt="star"></li>
+            <li><p>
+                No info available.
+            </p></li>
+        </ul>
+        <button class="bottomright">Add to Cart</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block body_2 %}
+    <h1>Our Games</h1><br><br>
+    <ul>
+    {% for game in game_list %}
+
+        <li><a href="/gamepage/{{game[0]}}">{{game[1]}}</a></li>
+
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block body_3 %}
+
+{% endblock %}
+

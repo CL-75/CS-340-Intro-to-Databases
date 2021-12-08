@@ -1,0 +1,25 @@
+All images used on this site were searched by using the "free to use and modify" search setting on Google Images and using the search term "video game related images".
+
+
+
+base.html file code cite:
+
+Template Name: Darkness
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+
+
+
+navi.css and styles.css code cite:
+
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+File: Navigation CSS and Layout CSS
+
+
+Code for using random image from image folder cited from: www.stackoverflow.com from user named "falsetrtu"
+   and from http://lost-theory.org/python/randomimg.html

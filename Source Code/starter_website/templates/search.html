@@ -1,0 +1,36 @@
+<!-- Search Page: Allows users to search games based on their ratings -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}search{% endblock %}
+
+
+{% block body %}
+
+
+<!-- Drop down bar search option with game ratings -->
+<h1>Our Games</h1><br><br>
+<form action="/search" method="Post">
+    <h3>Filter games by minimum rating</h3>
+    <input type="submit" value="Filter">
+    <select name="critic_rating">
+        <option value="0"></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+</form>
+
+  <!-- Displaying games catalog -->
+    <ul>
+    {% for game in game_list %}
+
+        <li><a href="/gamepage/{{game[0]}}">{{game[1]}}</a></li>
+
+    {% endfor %}
+    </ul>
+
+{% endblock %}

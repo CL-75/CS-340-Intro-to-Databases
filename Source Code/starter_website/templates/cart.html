@@ -1,0 +1,56 @@
+<!-- Cart Page: Displays a table of the user's added games with options to remove or purchase game(s) -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}cart{% endblock %}
+
+{% block body %}
+<h1>{{handle}}'s Cart</h1>
+
+
+
+<!-- Cart table -->
+<table style="width:100%">
+  <tr>
+    <th>Game Title</th>
+    <th>Price</th>
+    <th>TOTAL</th>
+  </tr>
+  {% for item in cart %}
+  <tr>
+    <form action="/remove_from_cart" method="post">
+      <td><a href="/gamepage/{{item[0]}}"></a> {{item[1]}}</td>
+      <td style="text-align:right">{{item[2]}}</td>
+      <td></td>
+      <input type="hidden" name="cart_id" value="{{cart_id}}">
+      <input type="hidden" name="game_id" value="{{item[0]}}">
+      <td><input type="submit" value="Remove"></td>
+    </form>
+  </tr>
+  {% endfor %}
+  <tr>
+     <td></td>
+     <td></td>
+     <td style="text-align:right">${{total}}</td>
+     <td></td>
+  </tr>
+</table>
+
+
+
+<!--  Purchase, add cart to user library, and print reciept  -->
+<form>
+  <button style="float:right;" formaction="/place_order" formmethod='post'>Purchase</button>
+</form>
+{% endblock %}
+
+{% block body_2 %}
+  <h1>Our Games</h1><br><br>
+  <ul>
+  {% for game in game_list %}
+      <li><a href="/gamepage/{{game[0]}}">{{game[1]}}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+

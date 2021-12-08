@@ -1,0 +1,72 @@
+<!-- User Profile Page: Displays the user's profile with information such as their full name, username, address, email, etc. Also has a form for the user to update their profile or delete it. -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}profile{% endblock %}
+
+{% block body %}
+
+
+<!-- Displaying user's profile information -->
+<div class="row">
+    <div class="column">
+        <img src="/static/pics/default_user.png">
+    </div>
+    <div class="column">
+        <h1>Customer Profile: </h1>
+        <ul class="profile">
+            <li>First Name: {{result[0]}} </li>
+            <li>Last Name: {{result[1]}} </li>
+            <li>Email: {{result[2]}}</li>
+            <li>Username: {{result[3]}}</li>
+            <li>{{result[4]}}, {{result[5]}}, {{result[6]}}, {{result[7]}} {{result[8]}}</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+
+
+<!-- Forms to update profile -->
+{% block body_2 %}
+<div>
+  <h1><u>Update Profile</u></h1>
+  <fieldset>
+    <form id="profile" action="/update_user" method="post">
+      <div class="row" style="border-style:none">
+        <div class="column-left">
+          <h3>Update Personal Information</h3>
+          <input type="text" name="fname" value={{result[0]}}><br><br>
+          <input type="text" name="lname" value={{result[1]}}><br><br>
+          <input type="text" name="email" value={{result[2]}}><br><br>
+          <input type="text" name="handle" value={{result[3]}}><br><br>
+          <input type="text" name="credit_card" value={{result[4]}}><br><br>
+        </div>
+        <div class="column-right">
+          <h3>Update Address</h3>
+          <span>
+            <input type="text" name="street_number" size="6" value={{result[9]}}>
+            <input type="text" name="street" value={{result[8]}}>
+          </span><br><br>
+          <input type="text" name="city" value={{result[7]}}><br><br>
+          <input type="text" name="state" value={{result[6]}}><br><br>
+          <input type="text" name="zip_code" value={{result[5]}}>
+          <br><br><br><br>
+          <input type="submit" value="Update">
+        </div>
+      </div>
+    </form>
+  </fieldset>
+</div>
+{% endblock %}
+
+
+<!-- "Delete Profile" option -->
+{% block body_3 %}
+<div class="bottomright row">
+  <form id="delete_user_profile" action="/delete_user" method="post">
+    <button>Delete Profile</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+@charset "utf-8";
+/*
+Template Name: Darkness
+Author: <a href="https://www.os-templates.com/">OS Templates</a>
+Author URI: https://www.os-templates.com/
+Licence: Free to use under our free template licence terms
+Licence URI: https://www.os-templates.com/template-terms
+File: Layout CSS
+*/
+
+@import "navi.css";
+@import "index.css";
+
+/*-------------------------------------------Forms-------------------------------*/
+
+form, fieldset, legend{margin:0; padding:0; border:none;}
+legend{display:none;}
+
+
+/*-------------------------------------------Tables-------------------------------*/
+
+table{width:100%; border-collapse:collapse; table-layout:auto; vertical-align:top; margin-bottom:15px; border:1px solid #999999;}
+table thead th{color:#FFFFFF; background-color:#000000; border:1px solid #999999; border-collapse:collapse; text-align:center; table-layout:auto; vertical-align:middle;}
+table tbody td{vertical-align:top; border-collapse:collapse; border-left:1px solid #999999; border-right:1px solid #999999;}
+table thead th, table tbody td{padding:5px; border-collapse:collapse;}
+table tbody tr.light{color:#CCCCCC; background-color:#333333;}
+table tbody tr.dark{color:#CCCCCC; background-color:#1E1E1E;}
+
+/*------------------------------------------Body----------------------------------*/
+
+html{overflow-y:scroll;}
+body{margin:0; padding:0; font-size:12px; font-family:verdana, Arial, Helvetica, sans-serif; color:#797979; background-color:#0c0c27;}
+
+.clear{clear:both;}
+br.clear{clear:both; margin-top:-15px;}
+
+a{outline:none; text-decoration:none;}
+
+img{display:block; margin:0; padding:0; border:0;}
+.imgl, .imgr{border:1px solid #999999; padding:5px;}
+.imgl{margin:0 8px 8px 0; clear:left;}
+.imgr{margin:0 0 8px 8px; clear:right;}
+
+/* ----------------------------------------------Wrapper------------------------------------- */
+
+div.wrapper{display:block; width:100%; margin:0; padding:0; text-align:left;}
+div.wrapper h1, div.wrapper h2, div.wrapper h3, div.wrapper h4, div.wrapper h5, div.wrapper h6{margin:0; padding:0 0 8px 0; font-size:20px; font-weight:normal; font-family:Georgia, "Times New Roman", Times, serif;}
+
+/* ----------------------------------------------Content------------------------------------- */
+
+/* #container{padding:30px 0; line-height:1.4em; color:#525252; background-color:#131313;} */
+#container{display:block; position:relative; width:920px; margin:0 auto; padding: 0px 20px 20px 20px; color:#98989A; background-color:#232323;}
+#container a{color:#FDC609;}
+#container h1, #container h2, #container h3, #container h4, #container h5, #container h6{margin-bottom:2px; padding-bottom:2px;}
+#stage{background-color:#241a33; padding:20px;}
+
+
+/* ----------------------------------------------Header------------------------------------- */
+
+#header{display:block; position:relative; width:920px; margin:0 auto; padding:0px 20px 0px 20px; color:#DBDBDB; background-color:#232323; font-family:Georgia, "Times New Roman", Times, serif;}
+#header #logo{display:block; float:left; width:260px; margin-top:7px;}
+#header #logo h1, #header #logo p{margin:0; padding:0; line-height:normal;}
+#header #logo h1{margin:0; padding:0; font-size:42px; border:none; text-transform:uppercase;}
+#header h1 a{color:#DBDBDB; background-color:#232323;}
+
+/* ----------------------------------------------Footer------------------------------------- */
+
+#footer{/* display:block; position:relative; */ width:920px; margin:0 auto; padding:20px; color:#98989A; background-color:#232323;}
+#footer a{color:#FDC609; background-color:#232323;}
+#footer h2{margin-bottom:10px; border-bottom-color:#98989A;}
+#footer p, #footer ul, #footer a{margin:0; padding:0; font-weight:normal; list-style:none; line-height:normal;}
+#footer .footbox{display:block; float:left; width:190px; margin:0 0 0 15px; padding:0;}
+#footer li{margin-bottom:3px;}
+#footer .last{margin:0;}
+/* #newsletter{display:block; float:left; width:300px;} */
+
+
+a:active {
+    color: #FDC609;
+  }

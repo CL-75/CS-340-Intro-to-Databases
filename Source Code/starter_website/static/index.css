@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+table, th, td {
+    border: 1px solid black;
+}
+
+#login { 
+    text-align: right;
+    width: flex;
+    padding: 10px;
+    margin: 1px;
+    }
+
+.gameon{
+    padding: 0px 20px 0px 20px;
+}
+
+span .gameon{
+    display: inline;
+    /* width: 150px; */
+}
+
+.row {
+    border-style: double;
+    padding: 6px;
+    display: flex;
+    /* height: 375px; */
+    }
+
+.column-left {
+    padding: 6px;
+    width: 60%;
+    }
+
+.column-right {
+    padding: 6px;
+    width: 40%;
+    }
+
+.rating img {
+    display: inline;
+    }
+
+.bottomright {
+    position: absolute;
+    bottom: 43px;
+    right: 43px;
+  }
+
+  .profile li {
+      padding: 6px;
+      margin: 6px;
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+#stage{
+    min-height:40px;
+}

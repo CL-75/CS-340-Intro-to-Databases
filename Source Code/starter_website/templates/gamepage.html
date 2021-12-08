@@ -1,0 +1,68 @@
+<!-- Game Page: Displays information about the user selected game including title, rating, price, and game description with an option to add the game to a cart -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}game_page{% endblock %}
+
+
+{% block body %}
+
+
+
+<div id="login">Welcome {{handle}} </div>
+
+
+<!-- Table displaying game information -->
+<div class="row">
+    <div class="column">
+        <img src="/static/pics/cabinet.png">
+    </div>
+    <div class="column">
+        <ul> 
+            <li><h1>{{ result[1] }}</h1></li>
+            <li>Price: <i>${{ result[2] }}</i></li>
+            <li class="rating">Rating:
+                {% for r in range(rating) %}
+                <img src="/static/pics/small_star.png" alt="star">
+                {% endfor %}
+            </li>
+            <li><p>
+                {{result[5]}}
+            </p></li>
+        </ul>
+        {% if handle %}
+        <form action="/append_cart" method = "post">
+
+            <input type="hidden" name="cart_id" value={{cart_id}}>
+            <input type="hidden" name="customer_id" value={{customer_id}}>
+            <input type="hidden" name="game_id" value={{result[0]}}>
+
+
+    <!-- "Add to Cart" button -->
+            <button class="bottomright">Add to Cart</button>
+        </form>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
+
+
+
+<!-- Displaying games catalog -->
+{% block body_2 %}
+<h1>Our Games</h1><br><br>
+    <ul>
+    {% for game in game_list %}
+
+        <li><a href="/gamepage/{{game[0]}}">{{game[1]}}</a></li>
+
+    {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block body_3 %}
+
+{% endblock %}
+

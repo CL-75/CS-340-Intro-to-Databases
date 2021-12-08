@@ -1,0 +1,264 @@
+<!-- Admin Page: Holds all the forms and tables necessary to add/delete games, customers, etc. -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}admin{% endblock %}
+
+{% block body %}
+
+<h1>Admin page</h1>
+
+{% endblock %}
+
+{% block body_2 %}
+
+
+<!-- Add Game -->
+<div>
+    <fieldset>
+        <form id="admin" action="/addgame" method="post">
+            <h4 text-align="center">Add Game to Catalog</h4>
+            <table>
+                <tr>
+                    <th><input type="text" name="game_title" placeholder="Game Title"></th>
+                    <th><input type="text" name="sell_price" placeholder="Sell Price"></th>
+                    <th><input type="text" name="discount" placeholder="Discount"></th>
+                    <th><input type="text" name="critic_rating" placeholder="Rating"></th>
+                    <th><input type="text" name="info" placeholder="Description"></th>
+                </tr>
+            </table>
+            <input type="submit" name="addgamesubmit" value="Add">
+        </form>
+    </fieldset><br><br>
+
+
+
+    <!-- Update/Delete Game -->
+    <div id="updategames" style="height:300px; width:100%; overflow:scroll">
+        <fieldset>
+            
+            <h3 text-align="center">Update/Delete Game</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Game ID</th>
+                    <th>Game Title</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                    <th>Rating</th>
+                    <th>Description</th>
+                </tr>
+                {% for game in games %}
+                <tr>
+                    <form id ="game_info">
+                        <td>
+                        {% if game[0] != 1 %}
+                            <input type="submit" value="Delete" formaction="/deletegame" formmethod="post">
+                        {% endif %}
+                        </td>
+                        <td><input type="submit" value="Update" formaction="/updategame" formmethod="post"></td>
+                        <td text-align="center"><input type="hidden" name="game_id" value='{{game[0]}}'>{{game[0]}} </td>
+                        <td text-align="center"><input type="text" name="game_title" value='{{game[1]}}'></td>
+                        <td text-align="center"><input type="text" name="sell_price" value={{game[2]}}></td>
+                        <td text-align="center"><input type="text" name="discount" value={{game[3]}}></td>
+                        <td text-align="center"><input type="text" name="critic_rating" value={{game[4]}}></td>
+                        <td text-align="center"><input type="text" name="info" value='{{game[5]}}'></td>
+                    </form>    
+                </tr>
+                {% endfor %}
+            </table>
+            
+        </fieldset>
+    </div>
+    <br>
+    <br>
+
+
+
+    <!-- Update/Delete Customer -->
+
+    <div style="height:300px; width:100%; overflow:scroll">
+        <fieldset>
+            <h3 text-align="center">Update/Delete Customer</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Cust ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Handle</th>
+                    <th>CreditCard</th>
+                    <th>Zip Code</th>
+                    <th>State</th>
+                    <th>City</th>
+                    <th>Street</th>
+                    <th>House #</th>
+                </tr>
+                {% for customer in customers %}
+                <tr>
+                    <form id = "customer_info">
+                        <td><input type="submit" value="Delete" formaction="/delete_user" formmethod="post"></td>
+                        <td><input type="submit" value="Update" formaction="/admin_update_user" formmethod="post"></td>
+                        <td text-align="center"><input type="hidden" name="customer_id" value='{{customer[0]}}'>{{customer[0]}}</td>
+                        <td text-align="center"><input type="text" name="fname" value='{{customer[1]}}'></td>
+                        <td text-align="center"><input type="text" name="lname" value='{{customer[2]}}'></td>
+                        <td text-align="center"><input type="text" name="email" value='{{customer[3]}}'></td>
+                        <td text-align="center"><input type="text" name="handle" value='{{customer[4]}}'></td>
+                        <td text-align="center"><input type="text" name="credit_card" value='{{customer[5]}}'></td>
+                        <td text-align="center"><input type="text" name="zip_code" value='{{customer[6]}}'></td>
+                        <td text-align="center"><input type="text" name="state" value='{{customer[7]}}'></td>
+                        <td text-align="center"><input type="text" name="city" value='{{customer[8]}}'></td>
+                        <td text-align="center"><input type="text" name="street" value='{{customer[9]}}'></td>
+                        <td text-align="center"><input type="text" name="street_number" value='{{customer[10]}}'></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+
+
+
+    <!-- Update/Delete Library -->
+
+    <div style="height:300px; width:100%; overflow:scroll">
+        <fieldset>
+            <h3 text-align="center">Delete Game from Library</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Customer Handle</th>
+                    <th>ID</th>
+                    <th>Game Title</th>
+                </tr>
+                {% for entry in library %}
+                    <form action="/delete_library" method="post">
+                        <input type="hidden" name="customer_id" value='{{entry[1]}}'>
+                        <input type="hidden" name="game_id" value='{{entry[3]}}'>
+                        <tr>
+                            <td><input type="submit" value="Delete"></td>
+                            <td text-align="center">{{entry[1]}}</td>
+                            <td text-align="center">{{entry[0]}}</td>
+                            <td text-align="center">{{entry[3]}}</td>
+                            <td text-align="center">{{entry[2]}}</td>
+                        </tr>
+                    </form>
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+
+    <!-- Insert Carts -->
+
+    <fieldset>
+        <form id="admin_cart" action="/admin_insert_cart" method="post">
+            <h4 text-align="center">Insert New Cart</h4>
+            <p>For Whome are you making this cart?</p>
+            <input type="submit" name="admin_add_cart" value="Add">
+            <select name="customer_id">
+                {% for customer in customers %}
+                <option value="{{customer[0]}}">{{customer[4]}}</option>
+                {% endfor %}
+            </select> 
+        </form>
+    </fieldset><br><br>
+
+    <div style="height:150px; width:50%; overflow:scroll">
+        <fieldset>
+            <h3 text-align="center">Open Carts</h3>
+            <table>
+                <tr>
+                    <th>Cart ID</th>
+                    <th>Customer Handle</th>
+                </tr>
+                {% for cart in carts %}                    
+                    <tr style="width:60px;">
+                        <td text-align="center">{{cart[0]}}</td>
+                        <td text-align="center">{{cart[1]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+
+    <!-- Insert Games_Carts-->
+    <fieldset>
+        <form id="admin_cart" action="/admin_add_game" method="post">
+            <h4 text-align="center">Insert Game into cart</h4>
+            <p>Which Cart / User do you wish to add which game too?</p>
+            <input type="submit" name="admin_add_game" value="Add">
+            <select name="cart_id">
+                {% for cart in carts %}
+                <option value="{{cart[0]}}">{{cart[0]}}, {{cart[1]}}</option>
+                {% endfor %}
+            </select> 
+            <select name="game_id">
+                {% for game in games %}
+                <option value="{{game[0]}}">{{game[1]}}</option>
+                {% endfor %}
+            </select> 
+        </form>
+    </fieldset><br><br>
+
+    <div style="height:150px; width:50%; overflow:scroll">
+        <fieldset>
+            <h3 text-align="center">Carts containing games</h3>
+            <table>
+                <tr>
+                    <th>Cart ID</th>
+                    <th>Sell Price</th>
+                </tr>
+                {% for cart in games_carts %}                    
+                    <tr style="width:60px;">
+                        <td text-align="center">{{cart[0]}}</td>
+                        <td text-align="center">{{cart[1]}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+
+    <!-- Create Orders -->
+
+
+    <h4 text-align="center">Admin Add Order</h4>
+    <p>Which Cart do you wish to turn to an order?</p>
+    <h3 text-align="center">Carts which are not Orders</h3>
+    <div style="height:150px; width:50%; overflow:scroll">
+        <fieldset>
+
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Cart ID</th>
+                </tr>
+                {% for each in order %} 
+                <form action="/admin_orders">                  
+                    <tr style="width:60px;">
+                        <td><input type="submit" value="Add" formaction="/admin_orders" formmethod="post"></td>
+                        <td><input type="hidden" name="cart_id" value='{{each}}'>{{each}}</td>
+                    </tr>
+                </form> 
+                {% endfor %}
+            </table>
+        </fieldset>
+    </div>
+    <br>
+    <br>
+   
+</div>
+
+{% endblock %}

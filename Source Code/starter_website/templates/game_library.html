@@ -1,0 +1,47 @@
+<!-- Library Page: Uses a table to display games already purchased by the user with options to remove the games -->
+
+
+{% extends "layouts/base.html" %}
+
+{% block title %}library{% endblock %}
+
+{% block body %}
+<h1>Library page</h1>
+
+
+<!-- Library Table -->
+<h2>Bordered Table</h2>
+<fieldset>
+  <table style="width:100%">
+    <tr>
+      <th>User's Library</th>
+    </tr>
+    {% for entry in library %}
+    <form action="/delete_library" method="post">
+      <tr>
+        <input type="hidden" name="customer_id" value='{{entry[1]}}'>
+        <input type="hidden" name="game_id" value="{{entry[3]}}">
+        <td style="text-align:center"><a href="gamepage/{{entry[3]}}">{{ entry[2] }}</a> </td>
+        <td style="text-align:right"><input type="submit" value="Remove"></td>
+      </tr>
+    </form>
+    {% endfor %}
+  </table>
+</fieldset>
+{% endblock %}
+
+
+<!-- List of games catalog -->
+{% block body_2 %}
+  <h1>Our Games</h1><br><br>
+  <ul>
+  {% for game in game_list %}
+      <li><a href="/gamepage/{{game[0]}}">{{game[1]}}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock %}
+
+{% block body_3 %}
+
+{% endblock %}
+
